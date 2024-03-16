@@ -34,9 +34,9 @@ app.decorate('authenticate', async function(request, reply) {
         const token = request.cookies.access_token;
 
         if (!token) {
-            return reply.status(401).send({message: 'Authentication required'})
+            return reply.status(401).send({message: 'Authentication required'});
         }
-        request.user = await app.jwt.verify(token)
+        request.user = await app.jwt.verify(token);
     } catch (err) {
         reply.send(err);
     }
@@ -49,7 +49,7 @@ app.post('/signup', (req, reply) => {
     reply.setCookie('access_token', token, {
         path: '/',
         httpOnly: true,
-        secure: true,
+        secure: true,  // true for https
     })
 
     reply.send({ token });
@@ -62,8 +62,11 @@ app.get('/test_signup', (req, reply) => {
     reply.setCookie('access_token', token, {
         path: '/',
         httpOnly: true,
-        secure: false,  // true for https
+        secure: false,
+        // sameSite: 'none'  // if enabled, "secure" need to be true
     })
+
+    console.log('Signup successfully!');
 
     reply.send({ token });
 });
