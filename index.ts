@@ -3,11 +3,6 @@ import fjwt from '@fastify/jwt';
 import fCookie from '@fastify/cookie';
 import cors from '@fastify/cors';
 
-declare module 'fastify' {
-    export interface FastifyInstance{
-        authenticate: any
-    }
-}
 
 const app = fastify();
 
