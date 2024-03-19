@@ -92,6 +92,8 @@ const start = () => {
         if (err) throw err;
         console.log(`Server is running at ${address}`);
     });
+
+    return app;
 }
 
 export {start}
