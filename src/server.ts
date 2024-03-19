@@ -2,6 +2,10 @@ import fastify from 'fastify';
 import fjwt from '@fastify/jwt';
 import fCookie from '@fastify/cookie';
 import cors from '@fastify/cors';
+import 'dotenv/config';
+
+const secret = process.env.SECRET;
+console.log(secret);
 
 const app = fastify();
 
