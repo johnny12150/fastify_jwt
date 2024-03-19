@@ -3,6 +3,7 @@ import {start} from "./server";
 
 describe('first test suite', ()=> {
     let server;
+
     beforeAll ( async () => {
         server = start();
         await server.ready();
